@@ -1,14 +1,21 @@
-const container = document.querySelector(".container");
-
+const gridContainer = document.querySelector(".container");
 
 for (let i = 0; i < 16; i++)
 {
-    const div = document.createElement("div");
-    div.setAttribute("style", "background-color: white; display: flex; flex-direction: column; flex: 1;");
-    container.appendChild(div);
+    const gridColumn = document.createElement("div");
+    gridColumn.setAttribute("style", "display: flex; flex-direction: column; flex: 1;");
+    gridContainer.appendChild(gridColumn);
     for (let j = 0; j < 16; j++) {
-        const divChild = document.createElement("div");
-        divChild.setAttribute("style", "border: solid black 0.1px; flex: 1;");
-        div.appendChild(divChild);
+        const gridCell = document.createElement("div");
+        gridCell.classList.add("pixel");
+        gridCell.setAttribute("style", "border: solid black 0.1px; flex: 1;");
+        gridColumn.appendChild(gridCell);
     }
 }
+
+const gridCellList = document.querySelectorAll(".pixel");
+gridCellList.forEach((cell) => {
+    cell.addEventListener("mouseenter", () => {
+        cell.style.backgroundColor = "black";
+    });
+});
