@@ -9,7 +9,7 @@ resizeBtn.addEventListener("click", () => {
     do {
         gridSize = parseInt(prompt("Grid size: "));
     } while (gridSize > 100);
-    
+
     deleteGrid();
     createGrid(gridSize);
 });
@@ -30,7 +30,7 @@ function createGrid(gridSize = 16) {
     const gridCellList = document.querySelectorAll(".pixel");
     gridCellList.forEach((cell) => {
     cell.addEventListener("mouseenter", () => {
-        cell.style.backgroundColor = "black";
+        cell.style.backgroundColor = getRandomColor();
     });
 });
 }
@@ -40,4 +40,13 @@ function deleteGrid() {
     grid = document.createElement("div");
     grid.classList.add("grid");
     container.appendChild(grid);
+}
+
+function getRandomColor() {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
 }
